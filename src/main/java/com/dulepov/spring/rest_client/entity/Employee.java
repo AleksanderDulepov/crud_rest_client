@@ -5,18 +5,7 @@ package com.dulepov.spring.rest_client.entity;
 
 public class Employee {
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", department='" + department + '\'' +
-                ", salary=" + salary +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
-    }
+
 
     private int id;
     private String name;
@@ -31,6 +20,15 @@ public class Employee {
 
     public Employee(int id, String name, String surname, String department, int salary, String email, String phoneNumber) {
         this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.department = department;
+        this.salary = salary;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Employee(String name, String surname, String department, int salary, String email, String phoneNumber) {
         this.name = name;
         this.surname = surname;
         this.department = department;
@@ -93,6 +91,19 @@ public class Employee {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", department='" + department + '\'' +
+                ", salary=" + salary +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 
 }

@@ -20,9 +20,29 @@ public class App
         CommunicationService сommunicationService=context.getBean("communicationService", CommunicationService.class);
 
         //READ ALL
-        List<Employee> emps=сommunicationService.getAllEmployees();
+//        List<Employee> emps=сommunicationService.getAllEmployees();
         //можем как то использовать полученные обьекты
-        System.out.println(emps);   //выводим не json, метод toString у ОБЬЕКТОВ!
+//        System.out.println(emps);   //выводим не json, метод toString у ОБЬЕКТОВ!
+
+        //READ ONE
+//        Employee empById=сommunicationService.getCurrentEmployee(1);
+//        System.out.println(empById);
+
+
+        //CREATE
+        Employee employee=new Employee("Ivan", "Sidorov", "HR", 1500, "q@mail.ru", "111-22-33");
+
+        //возвращаем json
+        //System.out.println(сommunicationService.createNewEmployee(employee));
+
+        //возвращаем обьект Employee
+        Employee createdEmp=сommunicationService.createNewEmployee(employee);
+        if (createdEmp!=null){
+            System.out.println("Пользователь был успешно добавлен\n"+createdEmp);
+        } else {
+            System.out.println("Нельзя передавать ID. Добавление зафейлино");
+        }
+
     }
 
 

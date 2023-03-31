@@ -39,18 +39,44 @@ public class CommunicationService {
     //READ ONE
     public Employee getCurrentEmployee(int empID){
 
+        //http-запрос
+        Employee emp=restTemplate.getForObject(URL+"/"+empID
+							, Employee.class);
+
+        return emp;
+    }
+
+
+//    //CREATE    (json ответ)
+//    public String createNewEmployee(Employee employee){
+//
+//        //проверяем, чтобы не было передано id, иначе будет попытка перезаписать существующий обьект
+//        int id=employee.getId();
+//
+//        if (id==0){
+//
+//            //если надо вернуть json ответ
+//            ResponseEntity<String> responseEntity=restTemplate.postForEntity(URL, employee, String.class);
+//            return ("Пользователь был успешно добавлен\n"+responseEntity.getBody());		// json
+//        }
+//        return ("Нельзя передавать ID. Добавление зафейлино");
+//    }
+
+    //CREATE    (обьект Employee ответ)
+    public Employee createNewEmployee(Employee employee){
+
+        //проверяем, чтобы не было передано id, иначе будет попытка перезаписать существующий обьект
+        int id=employee.getId();
+
+        if (id==0){
+
+            //если надо вернуть добавленный обьект Employee
+            ResponseEntity<Employee> responseEntity=restTemplate.postForEntity(URL, employee, Employee.class);
+            return (responseEntity.getBody());		//вывод не json, метода toString у ОБЬЕКТА!
+        }
         return null;
     }
 
-    //CREATE
-    public void createNewEmployee(Employee employee){
-    }
-
-    //UPDATE
-    public void updateEmployee(int empID, Employee employee){
-
-
-    }
 
     //PARTIAL_UPDATE
 
