@@ -29,21 +29,45 @@ public class App
 //        System.out.println(empById);
 
 
-        //CREATE
-        Employee employee=new Employee("Ivan", "Sidorov", "HR", 1500, "q@mail.ru", "111-22-33");
+//        //CREATE
+//        Employee employee=new Employee("Ivan", "Sidorov", "HR", 1500, "q@mail.ru", "111-22-33");
+//
+//        //возвращаем json
+//        //System.out.println(сommunicationService.createNewEmployee(employee));
+//
+//        //возвращаем обьект Employee
+//        Employee createdEmp=сommunicationService.createNewEmployee(employee);
+//        if (createdEmp!=null){
+//            System.out.println("Пользователь был успешно добавлен\n"+createdEmp);
+//        } else {
+//            System.out.println("Нельзя передавать ID. Добавление зафейлино");
+//        }
 
-        //возвращаем json
-        //System.out.println(сommunicationService.createNewEmployee(employee));
 
-        //возвращаем обьект Employee
-        Employee createdEmp=сommunicationService.createNewEmployee(employee);
-        if (createdEmp!=null){
-            System.out.println("Пользователь был успешно добавлен\n"+createdEmp);
-        } else {
-            System.out.println("Нельзя передавать ID. Добавление зафейлино");
-        }
+//        //UPDATE (обновленный обьект Employee ответ)
+//        Employee employee=new Employee("Ivan", "Sidorov", "HR", 1500, "q@mail.ru", "111-22-33");
+//        Employee updatedEmp=сommunicationService.updateEmployee(1, employee);
+//
+//        if (updatedEmp!=null){
+//            System.out.println("Пользователь был успешно обновлен\n"+updatedEmp);
+//        } else {
+//            System.out.println("Ошибка обновления");
+//        }
+
+//        //UPDATE (вывод json)
+//        Employee employee=new Employee("Ivan", "Sidorovich", "HR", 1500, "q@mail.ru", "111-22-33");
+//        String updatedEmp=сommunicationService.updateEmployee(1, employee);
+//
+//        if (updatedEmp!=null){
+//            System.out.println("Пользователь был успешно обновлен\n"+updatedEmp);
+//        } else {
+//            System.out.println("Ошибка обновления");
+//        }
+
+
 
     }
+
 
 
 

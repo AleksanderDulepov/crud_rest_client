@@ -3,9 +3,9 @@ package com.dulepov.spring.rest_client;
 import com.dulepov.spring.rest_client.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -76,6 +76,44 @@ public class CommunicationService {
         }
         return null;
     }
+
+//    //UPDATE    (обновленный обьект Employee ответ)
+//    public Employee updateEmployee(int empID, Employee employee) {
+//
+//        //присваиваем обьекту значение id из сегмента (если уже был передан-перезаписываем)
+//        employee.setId(empID);
+//
+//        HttpEntity<Employee> request = new HttpEntity<Employee>(employee);
+//
+//        //обработка ошибки валидации (api возвращает BadRequest)
+//        try {
+//            ResponseEntity<Employee> responseEntity=restTemplate.exchange(URL+"/"+empID
+//                    , HttpMethod.PUT, request, Employee.class);
+//            return responseEntity.getBody();
+//        } catch (HttpClientErrorException.BadRequest e){
+//            return null;
+//        }
+//    }
+
+
+    //UPDATE    (вывод json)
+    public String updateEmployee(int empID, Employee employee) {
+
+        //присваиваем обьекту значение id из сегмента (если уже был передан-перезаписываем)
+        employee.setId(empID);
+
+        HttpEntity<Employee> request = new HttpEntity<Employee>(employee);
+
+        //обработка ошибки валидации (api возвращает BadRequest)
+        try {
+            ResponseEntity<String> responseEntity=restTemplate.exchange(URL+"/"+empID
+                    , HttpMethod.PUT, request, String.class);
+            return responseEntity.getBody();
+        } catch (HttpClientErrorException.BadRequest e){
+            return null;
+        }
+    }
+
 
 
     //PARTIAL_UPDATE
