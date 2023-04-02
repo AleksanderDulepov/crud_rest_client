@@ -119,12 +119,19 @@ public class CommunicationService {
     //PARTIAL_UPDATE
         public Employee partialUpdateEmployee(int empID, String json) {
 
-            HttpEntity<String> request = new HttpEntity<String>(json);
+            //заголовки для обьекта реквеста для передачи content-type
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
 
-            Employee updatedEmp=restTemplate.patchForObject(URL+"/"+empID, request, Employee.class);
-            return updatedEmp;
+            HttpEntity<String> request = new HttpEntity<String>(json,headers);
 
-
+            //обработка ошибки валидации (api возвращает BadRequest)
+            try {
+                Employee updatedEmp=restTemplate.patchForObject(URL+"/"+empID, request, Employee.class);
+                return updatedEmp;
+            } catch (HttpClientErrorException.BadRequest e){
+                return null;
+            }
     }
 
 

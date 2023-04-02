@@ -67,10 +67,19 @@ public class App
 //        }
 
         //PARTIAL_UPDATE
-        String json= new JSONObject().put("dapartment","zavod").toString();
+
+        //для patch метода необходимо добавить зависимость org.apache.httpcomponents.client5 версии от 5 (см. pom.xml)
+
+        //создание стринга по формату json
+        String json= new JSONObject().put("email","123@mail.ru").toString();
 
         Employee updatedEmp=сommunicationService.partialUpdateEmployee(1, json);
-        System.out.println(updatedEmp);
+
+        if (updatedEmp!=null){
+            System.out.println("Пользователь был успешно обновлен\n"+updatedEmp);
+        } else {
+            System.out.println("Ошибка обновления");
+        }
 
     }
 
