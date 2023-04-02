@@ -117,6 +117,16 @@ public class CommunicationService {
 
 
     //PARTIAL_UPDATE
+        public Employee partialUpdateEmployee(int empID, String json) {
+
+            HttpEntity<String> request = new HttpEntity<String>(json);
+
+            Employee updatedEmp=restTemplate.patchForObject(URL+"/"+empID, request, Employee.class);
+            return updatedEmp;
+
+
+    }
+
 
 
     //DELETE

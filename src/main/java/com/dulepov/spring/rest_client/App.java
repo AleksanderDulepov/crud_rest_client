@@ -2,6 +2,8 @@ package com.dulepov.spring.rest_client;
 
 import com.dulepov.spring.rest_client.configuration.MyConfig;
 import com.dulepov.spring.rest_client.entity.Employee;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import org.json.JSONObject;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 
@@ -24,7 +26,7 @@ public class App
         //можем как то использовать полученные обьекты
 //        System.out.println(emps);   //выводим не json, метод toString у ОБЬЕКТОВ!
 
-        //READ ONE
+//        //READ ONE
 //        Employee empById=сommunicationService.getCurrentEmployee(1);
 //        System.out.println(empById);
 
@@ -64,7 +66,11 @@ public class App
 //            System.out.println("Ошибка обновления");
 //        }
 
+        //PARTIAL_UPDATE
+        String json= new JSONObject().put("dapartment","zavod").toString();
 
+        Employee updatedEmp=сommunicationService.partialUpdateEmployee(1, json);
+        System.out.println(updatedEmp);
 
     }
 
