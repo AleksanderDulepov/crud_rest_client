@@ -137,8 +137,15 @@ public class CommunicationService {
 
 
     //DELETE
-    public void deleteEmployee(int empID){
+    public String deleteEmployee(int empID){
 
+        try {
+            restTemplate.delete(URL+"/"+empID);
+            return "Успешное удаление";
+        } catch (HttpClientErrorException.NotFound e)
+        {
+            return "Такого пользователя в базе не существует";
+        }
 
     }
 

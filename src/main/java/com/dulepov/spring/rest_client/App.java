@@ -66,26 +66,26 @@ public class App
 //            System.out.println("Ошибка обновления");
 //        }
 
-        //PARTIAL_UPDATE
+//        //PARTIAL_UPDATE
+//
+//        //для patch метода необходимо добавить зависимость org.apache.httpcomponents.client5 версии от 5 (см. pom.xml)
+//
+//        //создание стринга по формату json
+//        String json= new JSONObject().put("email","123@mail.ru").toString();
+//
+//        Employee updatedEmp=сommunicationService.partialUpdateEmployee(1, json);
+//
+//        if (updatedEmp!=null){
+//            System.out.println("Пользователь был успешно обновлен\n"+updatedEmp);
+//        } else {
+//            System.out.println("Ошибка обновления");
+//        }
 
-        //для patch метода необходимо добавить зависимость org.apache.httpcomponents.client5 версии от 5 (см. pom.xml)
 
-        //создание стринга по формату json
-        String json= new JSONObject().put("email","123@mail.ru").toString();
-
-        Employee updatedEmp=сommunicationService.partialUpdateEmployee(1, json);
-
-        if (updatedEmp!=null){
-            System.out.println("Пользователь был успешно обновлен\n"+updatedEmp);
-        } else {
-            System.out.println("Ошибка обновления");
-        }
+        //DELETE
+        String removalResult=сommunicationService.deleteEmployee(30);
+        System.out.println(removalResult);
 
     }
-
-
-
-
-
 
 }
